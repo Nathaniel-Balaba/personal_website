@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name - Personal Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <script>
+      tailwind.config = {
+          darkMode: 'class',
+          theme: {
+              extend: {
+                  colors: {
+                      primary: '#3b82f6',
+                      secondary: '#10b981',
+                      dark: '#1f2937',
+                  },
+                  animation: {
+                    'bounce-slow': 'bounce 3s linear infinite',
+                    'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                  }
+              }
+          }
+      }
+  </script>
+  <style type="text/tailwindcss">
+      @layer utilities {
+          .section-padding {
+              @apply py-20 px-4 md:px-8 lg:px-16;
+          }
+          .section-title {
+              @apply text-3xl md:text-4xl font-bold mb-8 relative inline-block;
+          }
+          .section-title::after {
+              content: '';
+              @apply absolute bottom-0 left-0 w-1/2 h-1 bg-primary rounded-full;
+          }
+          .text-shadow {
+              text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+          }
+      }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-all duration-300">
+  <!-- Header -->
+  <header class="fixed w-full bg-white/80 dark:bg-gray-900/90 backdrop-blur-md shadow-md z-50 transition-all duration-300">
+      <div class="container mx-auto px-4 md:px-8 flex justify-between items-center py-4">
+          <a href="#" class="text-2xl font-bold group">
+              <span class="text-primary group-hover:text-secondary transition-colors duration-300">Nathaniel</span><span class="text-secondary group-hover:text-primary transition-colors duration-300">Balaba</span>
+          </a>
+          
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex space-x-8">
+              <a href="#home" class="nav-link">Home</a>
+              <a href="#about" class="nav-link">About</a>
+              <a href="#resume" class="nav-link">Resume</a>
+              <a href="#projects" class="nav-link">Projects</a>
+              <a href="#contact" class="nav-link">Contact</a>
+              <button id="theme-toggle" class="focus:outline-none relative">
+                  <span class="sr-only">Toggle dark/light mode</span>
+                  <div class="w-10 h-5 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center transition duration-300 p-0.5">
+                      <div class="toggle-circle w-4 h-4 bg-primary rounded-full transform transition-transform duration-300 translate-x-0 dark:translate-x-5"></div>
+                  </div>
+              </button>
+          </nav>
+          
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+              <i class="fas fa-bars text-2xl"></i>
+          </button>
+      </div>
+      
+      <!-- Mobile Navigation -->
+      <nav id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 shadow-md transition-all duration-300">
+          <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+              <a href="#home" class="mobile-nav-link">Home</a>
+              <a href="#about" class="mobile-nav-link">About</a>
+              <a href="#resume" class="mobile-nav-link">Resume</a>
+              <a href="#projects" class="mobile-nav-link">Projects</a>
+              <a href="#contact" class="mobile-nav-link">Contact</a>
+              <button id="mobile-theme-toggle" class="focus:outline-none flex items-center">
+                  <div class="w-10 h-5 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center mr-3 transition duration-300 p-0.5">
+                      <div class="toggle-circle w-4 h-4 bg-primary rounded-full transform transition-transform duration-300 translate-x-0 dark:translate-x-5"></div>
+                  </div>
+                  <span class="dark:hidden">Dark Mode</span>
+                  <span class="hidden dark:block">Light Mode</span>
+              </button>
+          </div>
+      </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 section-padding pt-28 overflow-hidden">
+      <div class="container mx-auto grid md:grid-cols-2 gap-8 items-center">
+          <div class="text-center md:text-left" data-aos="fade-right" data-aos-duration="1000">
+              <p class="text-lg text-primary mb-2">Hello, I'm</p>
+              <h1 id="typing-text" class="text-4xl md:text-6xl font-bold mb-4 inline-block">Nathaniel Balaba</h1>
+              <div id="cursor" class="inline-block w-1 h-10 bg-primary animate-pulse"></div>
+              <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-600 dark:text-gray-400">Web Developer & Designer</h2>
+              <p class="text-lg mb-8 max-w-lg mx-auto md:mx-0">I create beautiful, functional, and responsive websites as part of my journey as an IT student, continually learning and improving my skills in web development.</p>
+              <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                  <a href="#contact" class="btn-primary hover:-translate-y-1 transform transition-transform">Get In Touch</a>
+                  <a href="#projects" class="btn-secondary hover:-translate-y-1 transform transition-transform">View My Work</a>
+              </div>
+              <div class="mt-8 flex space-x-4 justify-center md:justify-start">
+                  <a href="#" class="social-icon hover:rotate-12 transform transition-all"><i class="fab fa-github"></i></a>
+                  <a href="#" class="social-icon hover:-rotate-12 transform transition-all"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" class="social-icon hover:rotate-12 transform transition-all"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="social-icon hover:-rotate-12 transform transition-all"><i class="fab fa-instagram"></i></a>
+              </div>
+          </div>
+          <div class="hidden md:block" data-aos="fade-left" data-aos-duration="1000">
+              <div class="profile-container relative w-full max-w-md mx-auto">
+                <div class="profile-circle absolute top-0 left-0 right-0 bottom-0 border-4 border-primary rounded-full animate-pulse-slow opacity-50"></div>
+                <div class="profile-circle absolute top-5 left-5 right-5 bottom-5 border-4 border-secondary rounded-full animate-pulse-slow delay-500 opacity-30"></div>
+                <img src="image/jj.jpg.png" alt="Your Name" class="w-full max-w-md mx-auto rounded-full shadow-xl hover:scale-105 transition-transform duration-500 z-10 relative">
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section-padding bg-white dark:bg-gray-800">
+      <div class="container mx-auto">
+          <h2 class="section-title" data-aos="fade-up">About Me</h2>
+          <div class="grid md:grid-cols-2 gap-8 items-center">
+              <div data-aos="fade-right" data-aos-duration="1000">
+                  <img src="image/jj.jpg.png" alt="About Me" class="w-full max-w-md mx-auto rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105">
+              </div>
+              <div data-aos="fade-left" data-aos-duration="1000">
+                  <h3 class="text-2xl font-semibold mb-4">Who am I?</h3>
+                  <p class="mb-4">I'm Nathaniel Balaba, a passionate and aspiring web developer currently pursuing a Bachelor of Science in Information Technology. As a third-year student based in Nueva Ecija, Philippines, I'm actively building my skills in full-stack web development while working on meaningful projects that combine technology and real-world impact.</p>
+                  <p class="mb-6">Right now, I'm focused on my capstone project AGAPAY – an AI-powered web application designed to detect rice leaf diseases and help farmers manage their crops more efficiently. This project has strengthened my skills in PHP, MySQL, machine learning integration, and cloud-based APIs, and it reflects my drive to create practical, user-centered solutions.</p>
+                  
+                  <div class="grid grid-cols-2 gap-4 mb-6">
+                      <div>
+                          <p><strong>Name:</strong> Nathaniel Balaba</p>
+                          <p><strong>Age:</strong> 21</p>
+                          <p><strong>Location:</strong> Nueva Ecija, Philippines</p>
+                      </div>
+                      <div>
+                          <p><strong>Email:</strong> nathanielbalaba1@gmail.com</p>
+                          <p><strong>Phone:</strong> +63 9380930542</p>
+                          <p><strong>Freelance:</strong> Available</p>
+                      </div>
+                  </div>
+                  
+                  <a href="./resume.pdf" download="YourName_Resume.pdf" class="btn-primary flex items-center gap-2 hover:shadow-lg max-w-max" id="download-cv">
+                      <i class="fas fa-download"></i>
+                      Download CV
+                  </a>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Resume Section -->
+  <section id="resume" class="section-padding bg-gray-50 dark:bg-gray-900">
+      <div class="container mx-auto">
+          <h2 class="section-title" data-aos="fade-up">My Resume</h2>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+              <!-- Education -->
+              <div data-aos="fade-up" data-aos-delay="100">
+                  <h3 class="text-2xl font-semibold mb-6 flex items-center">
+                      <i class="fas fa-graduation-cap text-primary mr-3"></i>
+                      Education
+                  </h3>
+                  
+                  <div class="resume-item">
+                      <span class="date">2016 - 2022</span>
+                      <h4>Junior/Senior</h4>
+                      <p class="institution">Galvan National High School</p>
+                      <p class="description">Studied Industrial Arts with a specialization in Electrical Installation and Maintenance, gaining hands-on experience in basic electrical systems, wiring, and safety practices during junior and senior high school.</div>
+                  
+                  <div class="resume-item">
+                      <span class="date">2022 - Present</span>
+                      <h4>Associate's Degree in Web Design</h4>
+                      <p class="institution">College Name</p>
+                      <p class="description">Focused on web development, UI/UX design principles, and integrating technologies such as PHP, MySQL, and machine learning in real-world projects. </div>
+              </div>
+              
+             <!-- Experience -->
+<div data-aos="fade-up" data-aos-delay="200">
+    <h3 class="text-2xl font-semibold mb-6 flex items-center">
+        <i class="fas fa-briefcase text-primary mr-3"></i>
+        Experience
+    </h3>
+
+    <div class="resume-item">
+        <span class="date">2024 - Present</span>
+        <h4>Capstone Project Developer</h4>
+        <p class="institution">AGAPAY – BSIT Capstone Project</p>
+        <p class="description">
+            Developed an AI-powered web application to detect rice leaf diseases. Worked on front-end and back-end integration using PHP, MySQL, and machine learning APIs.
+        </p>
+    </div>
+
+    <div class="resume-item">
+        <span class="date">2023 - 2024</span>
+        <h4>Web Development Student</h4>
+        <p class="institution">Nueva Ecija University</p>
+        <p class="description">
+            Built multiple academic web projects focused on responsive design, UI/UX principles, and database management using HTML, CSS, JavaScript, and PHP.
+        </p>
+    </div>
+
+    <div class="resume-item">
+        <span class="date">2022 - 2023</span>
+        <h4>Password Generator</h4>
+        <p class="institution">First Year Final Project</p>
+        <p class="description">
+            Developed a password generator using a web form interface where users can input criteria such as password length and character types to generate a secure password dynamically.
+        </p>
+    </div>
+    
+
+          
+          <!-- Skills -->
+          <div class="mt-16">
+              <h3 class="text-2xl font-semibold mb-6 flex items-center" data-aos="fade-up">
+                  <i class="fas fa-code text-primary mr-3"></i>
+                  Skills
+              </h3>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <!-- Technical Skills -->
+                  <div data-aos="fade-up" data-aos-delay="100">
+                      <h4 class="text-xl font-semibold mb-4">Technical Skills</h4>
+                      
+                      <div class="skill-item">
+                          <div class="flex justify-between mb-1">
+                              <span>HTML5 & CSS3</span>
+                              <span>95%</span>
+                          </div>
+                          <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                              <div class="bg-primary h-2.5 rounded-full skill-progress" data-width="95%" style="width: 0%"></div>
+                          </div>
+                      </div>
+                      
+                      <div class="skill-item">
+                          <div class="flex justify-between mb-1">
+                              <span>JavaScript</span>
+                              <span>85%</span>
+                          </div>
+                          <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                              <div class="bg-primary h-2.5 rounded-full skill-progress" data-width="85%" style="width: 0%"></div>
+                          </div>
+                      </div>
+                      
+                      <div class="skill-item">
+                          <div class="flex justify-between mb-1">
+                              <span>Tailwind CSS</span>
+                              <span>90%</span>
+                          </div>
+                          <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                              <div class="bg-primary h-2.5 rounded-full skill-progress" data-width="90%" style="width: 0%"></div>
+                          </div>
+                      </div>
+                      
+                      <div class="skill-item">
+                          <div class="flex justify-between mb-1">
+                              <span>PHP</span>
+                              <span>75%</span>
+                          </div>
+                          <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                              <div class="bg-primary h-2.5 rounded-full skill-progress" data-width="75%" style="width: 0%"></div>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <!-- Professional Skills -->
+                  <div data-aos="fade-up" data-aos-delay="200">
+                      <h4 class="text-xl font-semibold mb-4">Professional Skills</h4>
+                      
+                      <div class="skill-item">
+                          <div class="flex justify-between mb-1">
+                              <span>Communication</span>
+                              <span>90%</span>
+                          </div>
+                          <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                              <div class="bg-secondary h-2.5 rounded-full skill-progress" data-width="90%" style="width: 0%"></div>
+                          </div>
+                      </div>
+                      
+                      <div class="skill-item">
+                          <div class="flex justify-between mb-1">
+                              <span>Teamwork</span>
+                              <span>85%</span>
+                          </div>
+                          <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                              <div class="bg-secondary h-2.5 rounded-full skill-progress" data-width="85%" style="width: 0%"></div>
+                          </div>
+                      </div>
+                      
+                      <div class="skill-item">
+                          <div class="flex justify-between mb-1">
+                              <span>Problem Solving</span>
+                              <span>95%</span>
+                          </div>
+                          <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                              <div class="bg-secondary h-2.5 rounded-full skill-progress" data-width="95%" style="width: 0%"></div>
+                          </div>
+                      </div>
+                      
+                      <div class="skill-item">
+                          <div class="flex justify-between mb-1">
+                              <span>Creativity</span>
+                              <span>80%</span>
+                          </div>
+                          <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                              <div class="bg-secondary h-2.5 rounded-full skill-progress" data-width="80%" style="width: 0%"></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section-padding bg-white dark:bg-gray-800">
+      <div class="container mx-auto">
+          <h2 class="section-title" data-aos="fade-up">My Projects</h2>
+          
+          <div class="flex flex-wrap justify-center mb-8 gap-2" data-aos="fade-up">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="web">Web Design</button>
+              <button class="filter-btn" data-filter="app">App Development</button>
+              <button class="filter-btn" data-filter="ui">UI/UX Design</button>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Project 1 -->
+            <div class="project-item" data-category="web" data-aos="fade-up" data-aos-delay="100">
+                <div class="relative overflow-hidden rounded-xl group shadow-lg hover:shadow-2xl transition-all duration-500">
+                    <img src="image/new-logo.jpg?height=300&width=400" alt="Project 1" class="w-full transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 transform translate-y-2 group-hover:translate-y-0">
+                        <h3 class="text-xl font-semibold text-white mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">AGAPAY – Capstone Project</h3>
+                        <p class="text-gray-200 mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-200">
+                            A web-based application that detects rice leaf diseases using machine learning, provides real-time analysis, and offers crop management recommendations for farmers.
+                        </p>
+                        <div class="flex space-x-3 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-300">
+                            <a href="https://agapay.tech/" class="project-link">View Project</a>
+                            <a href="https://agapay.tech/" class="project-link">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section-padding bg-gray-50 dark:bg-gray-900">
+      <div class="container mx-auto">
+          <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+              <div data-aos="fade-right" data-aos-delay="100">
+                  <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                  
+                  <div class="space-y-6">
+                      <div class="flex items-start group">
+                          <div class="contact-icon group-hover:bg-primary/20 group-hover:scale-110">
+                              <i class="fas fa-map-marker-alt"></i>
+                          </div>
+                          <div>
+                              <h4 class="text-lg font-semibold">Location</h4>
+                              <p>Yuson, Guimba, Philippines</p>
+                          </div>
+                      </div>
+                      
+                      <div class="flex items-start group">
+                          <div class="contact-icon group-hover:bg-primary/20 group-hover:scale-110">
+                              <i class="fas fa-envelope"></i>
+                          </div>
+                          <div>
+                              <h4 class="text-lg font-semibold">Email</h4>
+                              <p>nathanielbalaba1@gmail.com</p>
+                          </div>
+                      </div>
+                      
+                      <div class="flex items-start group">
+                          <div class="contact-icon group-hover:bg-primary/20 group-hover:scale-110">
+                              <i class="fas fa-phone"></i>
+                          </div>
+                          <div>
+                              <h4 class="text-lg font-semibold">Phone</h4>
+                              <p>+63 9380930542</p>
+                          </div>
+                      </div>
+                      
+                      <div class="flex items-start group">
+                          <div class="contact-icon group-hover:bg-primary/20 group-hover:scale-110">
+                              <i class="fas fa-globe"></i>
+                          </div>
+                          <div>
+                              <h4 class="text-lg font-semibold">Website</h4>
+                              <p>www.nathaniel.com</p>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <div class="mt-8">
+                      <h4 class="text-lg font-semibold mb-4">Follow Me</h4>
+                      <div class="flex space-x-4">
+                          <a href="#" class="social-icon hover:rotate-12 transform transition-all"><i class="fab fa-github"></i></a>
+                          <a href="#" class="social-icon hover:-rotate-12 transform transition-all"><i class="fab fa-linkedin"></i></a>
+                          <a href="#" class="social-icon hover:rotate-12 transform transition-all"><i class="fab fa-twitter"></i></a>
+                          <a href="#" class="social-icon hover:-rotate-12 transform transition-all"><i class="fab fa-instagram"></i></a>
+                      </div>
+                  </div>
+              </div>
+              
+              <div data-aos="fade-left" data-aos-delay="200">
+                  <h3 class="text-2xl font-semibold mb-6">Send Me a Message</h3>
+                  
+                  <form id="contact-form" class="space-y-4">
+                      <div class="grid md:grid-cols-2 gap-4">
+                          <div>
+                              <label for="name" class="block mb-2">Name</label>
+                              <input type="text" id="name" name="name" class="form-input focus:ring-primary focus:border-primary" required>
+                          </div>
+                          <div>
+                              <label for="email" class="block mb-2">Email</label>
+                              <input type="email" id="email" name="email" class="form-input focus:ring-primary focus:border-primary" required>
+                          </div>
+                      </div>
+                      
+                      <div>
+                          <label for="subject" class="block mb-2">Subject</label>
+                          <input type="text" id="subject" name="subject" class="form-input focus:ring-primary focus:border-primary" required>
+                      </div>
+                      
+                      <div>
+                          <label for="message" class="block mb-2">Message</label>
+                          <textarea id="message" name="message" rows="5" class="form-input focus:ring-primary focus:border-primary" required></textarea>
+                      </div>
+                      
+                      <button type="submit" class="btn-primary w-full hover:-translate-y-1 transform transition-transform">Send Message</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 dark:bg-gray-950 text-white py-8">
+      <div class="container mx-auto px-4 text-center">
+          <p>&copy; <span id="current-year">2023</span> Nathaniel. All Rights Reserved.</p>
+          <p class="mt-2">Designed and Developed with <i class="fas fa-heart text-red-500 animate-pulse"></i></p>
+      </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+      // Initialize AOS animation library
+      AOS.init({
+          once: true,
+          duration: 800,
+      });
+
+      // Current Year
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+      
+      // Mobile Menu Toggle
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      mobileMenuButton.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+      });
+
+      // Theme Toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+      const html = document.documentElement;
+      
+      function toggleDarkMode() {
+          html.classList.toggle('dark');
+          localStorage.setItem('darkMode', html.classList.contains('dark'));
+      }
+      
+      themeToggle.addEventListener('click', toggleDarkMode);
+      mobileThemeToggle.addEventListener('click', toggleDarkMode);
+      
+      // Check for saved theme preference or system preference
+      if (localStorage.getItem('darkMode') === 'true' || 
+          (localStorage.getItem('darkMode') === null && 
+           window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          html.classList.add('dark');
+      }
+
+      // Text typing animation
+      const typingText = document.getElementById('typing-text');
+      const cursor = document.getElementById('cursor');
+      const textToType = 'Nathaniel Balaba';
+      let i = 0;
+
+      function typeWriter() {
+          if (i < textToType.length) {
+              typingText.textContent = textToType.substring(0, i + 1);
+              i++;
+              setTimeout(typeWriter, 150);
+          } else {
+              // After typing is complete, make cursor blink
+              setTimeout(() => {
+                  cursor.classList.add('animate-pulse');
+              }, 500);
+          }
+      }
+
+      // Start typing animation after a delay
+      setTimeout(typeWriter, 1000);
+
+      // Skill bar animation
+      function animateSkillBars() {
+          const skillBars = document.querySelectorAll('.skill-progress');
+          skillBars.forEach(bar => {
+              const width = bar.getAttribute('data-width');
+              bar.style.width = width;
+              bar.style.transition = 'width 1.5s ease-in-out';
+          });
+      }
+
+      // Animate skill bars when they come into view
+      const skillSection = document.getElementById('resume');
+      const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  setTimeout(animateSkillBars, 500);
+                  observer.unobserve(entry.target);
+              }
+          });
+      });
+      observer.observe(skillSection);
+      
+      // Smooth Scrolling
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              
+              const targetId = this.getAttribute('href');
+              const targetElement = document.querySelector(targetId);
+              
+              if (targetElement) {
+                  window.scrollTo({
+                      top: targetElement.offsetTop - 80,
+                      behavior: 'smooth'
+                  });
+                  
+                  // Close mobile menu if open
+                  if (!mobileMenu.classList.contains('hidden')) {
+                      mobileMenu.classList.add('hidden');
+                  }
+              }
+          });
+      });
+
+      // Active Navigation Link
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.nav-link');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+      
+      function setActiveLink() {
+          let current = '';
+          
+          sections.forEach(section => {
+              const sectionTop = section.offsetTop;
+              const sectionHeight = section.clientHeight;
+              
+              if (window.scrollY >= sectionTop - 100) {
+                  current = section.getAttribute('id');
+              }
+          });
+          
+          navLinks.forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === `#${current}`) {
+                  link.classList.add('active');
+              }
+          });
+          
+          mobileNavLinks.forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === `#${current}`) {
+                  link.classList.add('active');
+              }
+          });
+      }
+      
+      window.addEventListener('scroll', setActiveLink);
+      
+      // Project Filtering
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const projectItems = document.querySelectorAll('.project-item');
+      
+      filterButtons.forEach(button => {
+          button.addEventListener('click', () => {
+              // Remove active class from all buttons
+              filterButtons.forEach(btn => btn.classList.remove('active'));
+              
+              // Add active class to clicked button
+              button.classList.add('active');
+              
+              const filter = button.getAttribute('data-filter');
+              
+              projectItems.forEach(item => {
+                  if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                      item.style.display = 'block';
+                  } else {
+                      item.style.display = 'none';
+                  }
+              });
+          });
+      });
+      
+      // Contact Form Submission
+      const contactForm = document.getElementById('contact-form');
+      
+      contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Get form values
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('email').value;
+          const subject = document.getElementById('subject').value;
+          const message = document.getElementById('message').value;
+          
+          // Here you would typically send the form data to a server
+          // For demonstration, we'll just log it to console
+          console.log({
+              name,
+              email,
+              subject,
+              message
+          });
+          
+          // Show success message
+          alert('Thank you for your message! I will get back to you soon.');
+          
+          // Reset form
+          contactForm.reset();
+      });
+
+      // CV Download simulation
+      document.getElementById('download-cv').addEventListener('click', function(e) {
+          // In a real scenario, this button would have a download attribute
+          // For demonstration, we'll show an alert
+          alert('Your CV is being downloaded!');
+          // Note: In a real implementation, you'd replace the alert with a real CV file path
+      });
+  </script>
+
+  <style>
+      /* Custom Styles */
+      html {
+          scroll-behavior: smooth;
+      }
+      
+      .nav-link {
+          @apply text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-medium transition-colors duration-300 relative;
+      }
+      
+      .nav-link::after {
+          content: '';
+          @apply absolute left-0 bottom-[-4px] h-[2px] w-0 bg-primary transition-all duration-300 ease-in-out;
+      }
+      
+      .nav-link:hover::after {
+          @apply w-full;
+      }
+      
+      .nav-link.active {
+          @apply text-primary font-semibold;
+      }
+      
+      .nav-link.active::after {
+          @apply w-full;
+      }
+      
+      .mobile-nav-link {
+          @apply block py-2 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-medium transition-colors duration-300;
+      }
+      
+      .mobile-nav-link.active {
+          @apply text-primary font-semibold;
+      }
+      
+      .btn-primary {
+          @apply inline-block bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg;
+      }
+      
+      .btn-secondary {
+          @apply inline-block bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white font-medium py-3 px-6 rounded-full transition-all duration-300;
+      }
+      
+      .social-icon {
+          @apply inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white transition-all duration-300;
+      }
+      
+      .resume-item {
+          @apply relative pl-8 pb-8 border-l-2 border-gray-300 dark:border-gray-700 last:border-0 last:pb-0;
+      }
+      
+      .resume-item::before {
+          content: '';
+          @apply absolute top-0 left-0 w-4 h-4 bg-primary rounded-full -translate-x-1/2;
+      }
+      
+      .resume-item .date {
+          @apply inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium mb-2;
+      }
+      
+      .resume-item h4 {
+          @apply text-xl font-semibold mb-1;
+      }
+      
+      .resume-item .institution {
+          @apply text-gray-600 dark:text-gray-400 mb-2;
+      }
+      
+      .skill-item {
+          @apply mb-6;
+      }
+      
+      .filter-btn {
+          @apply px-4 py-2 rounded-full border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-primary hover:text-primary transition-all duration-300 focus:outline-none;
+      }
+      
+      .filter-btn.active {
+          @apply bg-primary border-primary text-white;
+      }
+      
+      .project-link {
+          @apply text-white hover:text-primary transition-colors duration-300;
+      }
+      
+      .contact-icon {
+          @apply flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mr-4 transition-all duration-300;
+      }
+      
+      .form-input {
+          @apply w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 transition-all duration-300;
+      }
+      
+      .profile-container {
+          position: relative;
+      }
+      
+      .profile-circle {
+          animation: pulse 3s infinite;
+      }
+      
+      @keyframes moveBackground {
+          0% {
+              background-position: 0% 50%;
+          }
+          50% {
+              background-position: 100% 50%;
+          }
+          100% {
+              background-position: 0% 50%;
+          }
+      }
+  </style>
+</body>
+</html>
